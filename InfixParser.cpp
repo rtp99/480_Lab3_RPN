@@ -60,6 +60,9 @@ std::vector<std::string> InfixParser::parseString(std::string infix) {
             }
         } else {
             // TODO:THROW EXCEPTION
+            std::string error = "invalid character ";
+            error.push_back(*input_itr);
+            throw error;
         }
     }
     while (proc_stack.top() != '\0') {
