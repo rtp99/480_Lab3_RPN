@@ -3,4 +3,4 @@ project(480_Lab3_RPN)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(480_Lab3_RPN main.cpp)
+add_executable(480_Lab3_RPN main.cpp InfixParser.cpp InfixParser.h)
