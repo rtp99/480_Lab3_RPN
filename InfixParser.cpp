@@ -9,9 +9,10 @@ std::vector<std::string> InfixParser::parseString(std::string infix) {
     std::string dig_acc = "";   // digit accumulator, used for combining individual digits into full numbers
     std::string func_acc = "";  // function accumulator, used for combining characters of functions into their full name
     for (input_itr = infix.begin(); input_itr != infix.end(); input_itr++) {
-
+        // ignore whitespace
+        if(*input_itr == ' ') {}
         // if current character is a digit, collect all digits in final number, and push to output vector
-        if (isdigit(*input_itr)) {
+        else if (isdigit(*input_itr)) {
             while (isdigit(*input_itr)) {
                 dig_acc.push_back(*input_itr);
                 input_itr++;
@@ -41,7 +42,7 @@ std::vector<std::string> InfixParser::parseString(std::string infix) {
             }
             if (proc_stack.top() == '(') {
                 // if there is a negative sign with no operand, this open paren is its operand
-                if(dig_acc == "-")
+                if (dig_acc == "-")
                     output_vec.emplace_back(1, '-');
                 char top = proc_stack.top();
                 proc_stack.pop();
