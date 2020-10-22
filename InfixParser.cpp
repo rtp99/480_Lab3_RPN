@@ -14,8 +14,16 @@ std::vector<std::string> InfixParser::parseString(std::string infix) {
         // ignore equals signs at the end of equations
         else if (*input_itr == '=' && *input_itr == *--infix.end()) {}
             // if current character is a digit, collect all digits in final number, and push to output vector
-        else if (isdigit(*input_itr)) {
-            while (isdigit(*input_itr)) {
+            // handles decimal places
+        else if (isdigit(*input_itr) || *input_itr == '.') {
+            int decimal_counter = 0;
+            while (isdigit(*input_itr) || *input_itr == '.') {
+                if(*input_itr == '.')
+                    decimal_counter++;
+                if (decimal_counter > 1) {
+                    std::string error = "invalid character . too many decimals";
+                    throw error;
+                }
                 dig_acc.push_back(*input_itr);
                 input_itr++;
             }
