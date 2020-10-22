@@ -12,7 +12,7 @@ double RPNSolver::solveRPN(std::vector<std::string> RPN) {
         if(isdigit((*itr)[itr->size() - 1])) {
             op_stack.push(std::stod(*itr));
         }
-        else  {if (*itr == "+"){
+        else if (*itr == "+"){
             op2 = op_stack.top();
             op_stack.pop();
             op1 = op_stack.top();
@@ -49,22 +49,34 @@ double RPNSolver::solveRPN(std::vector<std::string> RPN) {
                 op_stack.push(pow(op1, op2));
         }
         else if (*itr == "sin"){
-
+                op1 = op_stack.top();
+                op_stack.pop();
+                op_stack.push(sin(op1));
         }
         else if (*itr == "cos"){
-
+                op1 = op_stack.top();
+                op_stack.pop();
+                op_stack.push(cos(op1));
         }
         else if (*itr == "tan"){
-
+                op1 = op_stack.top();
+                op_stack.pop();
+                op_stack.push(tan(op1));
         }
         else if (*itr == "cot"){
-
+                op1 = op_stack.top();
+                op_stack.pop();
+                op_stack.push(cos(op1) / sin(op1));
         }
         else if (*itr == "ln"){
-
+                op1 = op_stack.top();
+                op_stack.pop();
+                op_stack.push(log(op1));
         }
         else if (*itr == "log"){
-
+                op1 = op_stack.top();
+                op_stack.pop();
+                op_stack.push(log10(op1));
         }
 
     }
