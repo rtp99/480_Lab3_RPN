@@ -17,4 +17,7 @@ This is default behavior for many of the calculators I have used in the past, so
 If you doubt this, open up the windows default calculator and try it for yourself.
 Example: +3 returns 3
 Example: = returns 0
+Negatives are handled similarly to the negate button on a calculator. This means multiple negative signs will stack.
+Example: --3 returns 3
+Example: ---3 returns -3
 
