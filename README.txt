@@ -20,4 +20,4 @@ Example: = returns 0
 Negatives are handled similarly to the negate button on a calculator. This means multiple negative signs will stack.
 Example: --3 returns 3
 Example: ---3 returns -3
-
+Exit the program by closing the command line window, CTRL+C, or whatever the equivalent is for your OS.

@@ -57,12 +57,12 @@ std::vector<std::string> InfixParser::parseString(std::string infix) {
             if (proc_stack.top() == "(") {
                 proc_stack.pop();
             } else {
-                std::string error = "incorrect syntax )";
+                std::string error = "incorrect syntax ), no matching parenthesis";
                 throw error;
             }
             neg_flag = false;
         } else if (isOperator(*input_itr)) {
-            if(neg_flag && *input_itr == '-') {
+            if (neg_flag && *input_itr == '-') {
                 proc_stack.push("neg");
                 neg_flag = true;
             } else {

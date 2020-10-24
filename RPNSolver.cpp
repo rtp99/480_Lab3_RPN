@@ -35,6 +35,14 @@ double RPNSolver::solveRPN(std::vector<std::string> RPN) {
             op_stack.pop();
             op1 = op_stack.top();
             op_stack.pop();
+            if (op1 == 0) {
+                std::string error = "incorrect syntax, division by 0";
+                throw error;
+            }
+            if (op2 == 0) {
+                std::string error = "incorrect syntax, dividing 0";
+                throw error;
+            }
             op_stack.push(op1 / op2);
         } else if (*itr == "^") {
             op2 = op_stack.top();
@@ -71,11 +79,24 @@ double RPNSolver::solveRPN(std::vector<std::string> RPN) {
             op_stack.pop();
             op_stack.push(0 - op1);
         } else {
-            std::string error = "incorrect syntax ";
-            error.append(*itr);
+            std::string error;
+            if (*itr == "(") {
+                error = "incorrect syntax (, no matching parenthesis";
+            } else {
+                error = "incorrect syntax ";
+                error.append(*itr);
+            }
             throw error;
         }
 
+    }
+    if (op_stack.top() == FP_INFINITE) {
+        std::string error = "incorrect syntax, returns infinity";
+        throw error;
+    }
+    if (op_stack.top() == FP_NAN) {
+        std::string error = "incorrect syntax, division by 0";
+        throw error;
     }
     return op_stack.top();
 }
