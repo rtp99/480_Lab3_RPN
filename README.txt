@@ -1,3 +1,5 @@
+To compile, run "make lab3"
+To execute, "./lab3"
 This program should be run in the command line.
 Input may be entered when a > symbol is present.
 Conclude your statement by pressing enter, the equals sign at the end of an equation is not necessary.
